@@ -1,0 +1,22 @@
+{% include "common/head.html" %}
+
+<!-- <div id="wrapper" class="container">
+    <h1>{{title}}</h1>
+    <p>Welcom to {{title}}</p>
+</div> -->
+
+<div id="container-login">
+    <form class="box" action="./search" method="get">
+        <!-- xhr 통신 할 때 method=post로 변경 해줘야 함. -->
+        <h1>K-Boxing</h1>
+        <input type="text" name="" placeholder="Username">
+        <input type="password" name="" placeholder="Password">
+        <input type="submit" name="" value="Login">
+    </form>
+</div>
+
+<!-- post값은 db로 쏜다. xhr로 ajax통신 후, 
+    correct면 search 페이지로 이동한다. -->
+
+
+{% include "common/footer.html" %}

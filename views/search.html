@@ -1,0 +1,98 @@
+{% include "common/head.html" %}
+{% include "common/menu.html" %}
+
+<div class="wrapper" style="background-image:url('./istockphoto-1006291908-612x612.jpg');">
+    <div class="block"></div>
+        <div class="container-search">
+            <form id="search-form">
+                <div class="search-tap valign-wrapper">
+                    <label for="date">등록 날짜: </label>
+                    <input id="date" type="text">
+                
+                    <label for="name">이름: </label>
+                    <input id="name" type="text">
+                </div>
+        
+                <div class="search-tap valign-wrapper">
+                    <label for="month">등록 개월: </label>
+                    <input id="month" type="text">
+                
+                    <label for="gender">성별: </label>
+                    <input id="gender" type="text">
+                </div>
+                <button class="btn waves-effect waves-light">검색</button>
+            </form>
+        </div>
+
+        <div class="block"></div>
+
+        <div class="container-result">
+            <table class="striped centered"id="result-list">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>이름</th>
+                        <th>성별</th>
+                        <th>등록일자</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.gender}}</td>
+                        <td>{{user.createdAt}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</div>
+
+{% include "common/footer.html" %}
+
+
+
+<script>
+    document.getElementById('search-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // const name = e.target.name.value;
+    // const gender = e.target.gender.value;
+
+    const res = await axios.get('/users');
+    const users = res.data;
+    console.log(users);
+
+    const tbody = document.querySelector('#result-list tbody');
+    tbody.innerHTML = '';
+
+    users.map(function (user) {
+        // const row = document.createElement('tr');
+        // row.addEventListener('click', () => {
+        //     getComment(user._id);
+        // })
+
+        const row = document.createElement('tr');
+
+        let td = document.createElement('td');
+        td.textContent = user._id;
+        row.appendChild(td);
+
+        td = document.createElement('td');
+        td.textContent = user.name;
+        row.appendChild(td);
+
+        td = document.createElement('td');
+        td.textContent = user.gender;
+        row.appendChild(td)
+
+        td = document.createElement('td');
+        td.textContent = user.createdAt;
+        row.appendChild(td)
+
+        tbody.appendChild(row);
+    })
+})
+</script>
