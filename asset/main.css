@@ -117,7 +117,7 @@ body {
     border:0;
     background:none;
     display:block;
-    margin:20px auto;
+    margin:20px 70px auto;
     text-align:center;
     border: 2px solid white;
     padding: 10px 30px;
@@ -127,6 +127,7 @@ body {
     transition: 0.25s;
     cursor: pointer;
     font-size:15px;
+    
 
     background: #424242;
     
@@ -315,3 +316,22 @@ tr>th:first-child,tr>td:first-child {
 position: sticky;
 left: 0;
 }
+
+
+
+
+.container-graph{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+
+    background:#D3D3D3;
+
+    width:60%;
+    /* background:#bbdefb; */
+    background-color:rgba(255, 255, 255, 1.0);
+    border-radius: 30px;
+    margin : auto;
+    }
+    

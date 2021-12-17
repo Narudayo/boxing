@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
+    "chart.js": "^3.6.2",
     "express": "^4.17.1",
     "materialize-css": "^1.0.0-rc.2",
     "mongodb": "^4.2.1",

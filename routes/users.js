@@ -27,4 +27,15 @@ router.route('/')
         }
     })
 
+router.route('/:id')
+    .delete(async (req, res, next) => {
+        try{
+            const result = await User.remove({_id: req.params.id});
+            res.json(result);
+        }catch (err) {
+            console.error(err);
+            next(err);
+        }
+    })
+
 module.exports = router;

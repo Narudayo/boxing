@@ -1,18 +1,124 @@
 {% include "common/head.html" %}
 {% include "common/menu.html" %}
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="wrapper" style="background-image:url('./2503286.jpg');">
     <div class="container-graph">
-        <div class="re">
-
-        </div>
-        <div class="stop">
-
-        </div>
-        <div class="gender">
-            
+        <div class="total-reg">
+            <canvas id="reglist"></canvas>
         </div>
     </div>
+    <div class="block"></div>    
+        <div class="total-stop">        
+        </div>
+
+    <div class="container-graph">
+        <div class="total-gender">
+            <canvas id="genderlist"></canvas>
+        </div>
+    </div>
+    
 </div>
 
 {% include "common/footer.html" %}
+
+<script>
+    
+    // const DATA_COUNT = 7;
+    // const NUMBER_CFG = {count: DATA_COUNT, min: -100, max: 100};
+    // const data = {
+    //     labels: Utils.months({count: DATA_COUNT}),
+    //     datasets: [
+    //         {
+    //         label: 'Dataset 1',
+    //         data: Utils.numbers(NUMBER_CFG),
+    //         fill: false,
+    //         borderColor: Utils.CHART_COLORS.red,
+    //         backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+    //         },
+    //     ]
+    // };
+
+    // 날짜 선택 기준 1주일, 한달, 1년으로 하기.
+
+
+    function renderRegList(){
+            const labels = [
+            '1월',
+            '2월',
+            '3월',
+            '4월',
+            '5월',
+            '6월',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: '신규 회원 등록',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data
+        };
+
+        const reglist = new Chart(
+            document.getElementById('reglist'),
+            config
+        );
+    }
+
+
+    function genderList(){
+
+        const data = {
+        labels: ['남', '여'],
+        datasets: [
+            {
+            label: '성비(%)',
+            data: [
+                32,
+                68
+            ],
+            backgroundColor: [
+                "#f79546", 
+                "#9bba57",
+            ],
+            }
+        ]
+        };
+
+        const config = {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: '성비'
+                }
+                }
+            },
+        };
+
+        const genderlist = new Chart(
+            document.getElementById('genderlist'),
+            config
+        );
+
+    }
+
+            renderRegList()
+            genderList()
+
+</script>
